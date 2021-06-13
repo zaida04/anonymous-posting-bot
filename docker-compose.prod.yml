@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  bot:
+    image: thinkfiveable/discord-bot-template
+    restart: unless-stopped
+    env_file: .env
