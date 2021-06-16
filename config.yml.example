@@ -1,0 +1,10 @@
+guilds: 
+  - id: "GUILDID"
+    prefix: "l!"
+    log_channel: "LOGCHANNELID"
+    webhook_name: "WEBHOOKNAME"
+    webhook_icon_url: "WEBHOOKICONURL"
+    channel_webhooks:
+      - channel_id: "CHANNELID"
+        webhook_id: "WEBHOOKID"
+        webhook_token: "WEBHOOKTOKEN"

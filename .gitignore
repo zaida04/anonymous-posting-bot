@@ -1,7 +1,9 @@
 node_modules/
 dist/
 data/
-*.env
 .parcel-cache/
 packed/
 .cache/
+
+*.env
+config.yml

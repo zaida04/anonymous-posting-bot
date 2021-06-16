@@ -7,25 +7,27 @@
     <a href="https://discord.gg/thinkfiveable">
       <img src="https://img.shields.io/discord/564151499685625856.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2 ">
     </a>
-    <a href="https://github.com/ThinkFiveable/discord-bot-template/actions/workflows/lint.yml">
-      <img src="https://github.com/ThinkFiveable/discord-bot-template/actions/workflows/lint.yml/badge.svg">
-    </a>
+    <a href="https://github.com/zaida04/anonymous-posting-bot/actions/workflows/lint.yml">
+      <img src="https://github.com/zaida04/anonymous-posting-bot/actions/workflows/lint.yml/badge.svg">
+    </a> 
   </div>
 
   <div align="center">
-    Template for Discord.js/Discord-akairo based Fiveable Discord bots
+  Allow server members to send in messages to be semi-anonymously posted in a Discord channel, while also giving server moderators the ability to moderate such content.
     <br />
-    <a href="https://github.com/thinkfiveable/discord-bot-template/issues">Report Bug</a>
+    <a href="https://github.com/zaida04/anonymous-posting-bot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/thinkfiveable/discord-bot-template/issues">Request Feature</a>
+    <a href="https://github.com/zaida04/anonymous-posting-bot/issues">Request Feature</a>
     ·
-    <a href="https://github.com/thinkfiveable/discord-bot-template/pulls">Send a Pull Request</a>
+    <a href="https://github.com/zaida04/anonymous-posting-bot/pulls">Send a Pull Request</a>
     </p>
   </div>
 </p>
 
 # 📝 What is this?
-This repository houses the code for Discord.js/Discord-akairo based Fiveable Discord bots. It includes boilerplate code for a functioning Discord bot. It does *not* include any database type structures for sake of flexibility with the boilerplate code.
+This repository houses the code for the Fiveable Discord server network's "anonymous" message posting bot. The original intention for this bot was for it to be used during Pride Month, allowing people to ask questions without exposing their identities.
+
+The bot allows people to **DM** it with the messages they wish to send in. It also allows moderators to set a log channel in their server where they get notifications as to who sends in which messages, with the expectation that they will stay confidential.
 
 # 📝Commands
 
@@ -33,6 +35,7 @@ This repository houses the code for Discord.js/Discord-akairo based Fiveable Dis
 |----------------------	|----------------------------------------------------------------------------------	|
 | `eval`              	| Run some code through your bot                                                   	|
 | `help`              	| Get information on all the commands your bot has.                               	|
+| `anon`              	| Send in an anonymous message to a channel in a guild                            	|
 
 # 🚧 Getting Started
 
@@ -41,17 +44,15 @@ Please supply the following ENV variables in a `.env` file in the root of the pr
 
 | Key                  	| Description                                                       	| Optional 	|
 |----------------------	|-------------------------------------------------------------------	|----------	|
-| TOKEN                	| The token belonging to the Discord bot                            	|          	|
+| DISCORD_TOKEN        	| The token belonging to the Discord bot                            	|          	|
 | PREFIX               	| Prefix for the bot                                                	|          	|
-| GUILD                	| The guild this bot is meant to function in                        	|          	|
-| ADMIN_ID             	| ID of the admin of this bot. Bypasses<br>all cooldowns/ratelimits 	|     ✔️    |
 
 ## Setup
 You can setup this project manually using the steps below, or using the include docker-compose file by doing `docker compose up -d --build`. There is also an included `heroku.yml` file for deploying to Heroku, which should build with the Dockerfile provided.
 
 ```
-git clone https://github.com/ThinkFiveable/discord-bot-template.git   
-cd discord-bot-template
+git clone https://github.com/zaida04/anonymous-posting-bot.git   
+cd anonymous-posting-bot
 npm install  
 npm run build  
 ```
@@ -64,12 +65,12 @@ npm run start
 
 ## LICENSE
 
-This license can also be found [here](https://github.com/ThinkFiveable/discord-bot-template/blob/main/LICENSE)
+This license can also be found [here](https://github.com/zaida04/anonymous-posting-bot/blob/main/LICENSE)
 
 ```
 MIT License
 
-Copyright (c) 2021 Fiveable
+Copyright (c) 2021 Zaid (Nico)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

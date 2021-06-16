@@ -2,6 +2,6 @@ version: '3.7'
 
 services:
   bot:
-    image: thinkfiveable/discord-bot-template
+    image: zaid450/anonymous-posting-bot
     restart: unless-stopped
     env_file: .env

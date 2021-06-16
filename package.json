@@ -1,7 +1,7 @@
 {
-  "name": "discord-bot-template",
+  "name": "anonymous-posting-bot",
   "version": "0.0.1",
-  "description": "Template for Fiveable discord.js based Discord bots",
+  "description": "Allow server members to send in messages to be semi-anonymously posted in a Discord channel, while also giving server moderators the ability to moderate content sent in.",
   "main": "dist/index.js",
   "scripts": {
     "build": "npx rimraf dist/ && tsc",
@@ -9,7 +9,7 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "node -r dotenv/config dist/index.js",
     "dev": "npm run build && npm start",
-    "deploy": "heroku container:push worker --app=discord-bot-template && heroku container:release worker --app=discord-bot-template"
+    "deploy": "heroku container:push worker --app=anonymous-posting-bot && heroku container:release worker --app=anonymous-posting-bot"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
@@ -27,22 +27,23 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@types/node": "^15.12.2",
     "common-tags": "^1.8.0",
-    "discord-akairo": "^8.1.0",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "tslib": "^1.14.1"
+    "tslib": "^1.14.1",
+    "yaml": "^1.10.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThinkFiveable/discord-bot-template.git"
+    "url": "git+https://github.com/zaida04/anonymous-posting-bot.git"
   },
   "author": "Zaid \"Nico\"",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ThinkFiveable/discord-bot-template/issues"
+    "url": "https://github.com/zaida04/anonymous-posting-bot/issues"
   },
-  "homepage": "https://github.com/ThinkFiveable/discord-bot-template#readme",
+  "homepage": "https://github.com/zaida04/anonymous-posting-bot#readme",
   "prettier": {
     "printWidth": 110,
     "tabWidth": 4,

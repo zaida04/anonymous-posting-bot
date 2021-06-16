@@ -1,19 +1,14 @@
-import { Guild } from 'discord.js';
-import { CommandHandler, ListenerHandler } from 'discord-akairo';
-
-export interface AkClientOptions {
-	ADMIN_ID: string;
-	PREFIX: string;
-	GUILD: string;
-}
-
-declare module 'discord-akairo' {
-	interface AkairoClient {
-		statusInterval: NodeJS.Timeout | null;
-		commandHandler: CommandHandler;
-		listenerHandler: ListenerHandler;
-		guild?: Guild;
-		config: AkClientOptions;
-		info(str: string): void;
-	}
+export interface YAMLConfig {
+	guilds: {
+		id: string;
+		prefix: string;
+		log_channel: string;
+		webhook_name: string;
+		webhook_icon_url: string;
+		channel_webhooks: {
+			channel_id: string;
+			webhook_token: string;
+			webhook_id: string;
+		}[];
+	}[];
 }
