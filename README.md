@@ -29,7 +29,7 @@ This repository houses the code for the Fiveable Discord server network's "anony
 
 The bot allows people to **DM** it with the messages they wish to send in. It also allows moderators to set a log channel in their server where they get notifications as to who sends in which messages, with the expectation that they will stay confidential.
 
-# 🎥How do people use this?
+# 🎥 How do people use this?
 ![Example Video](static/example-usage.gif)
 
 **What it looks like on the channel-side:**
@@ -37,7 +37,7 @@ The bot allows people to **DM** it with the messages they wish to send in. It al
 
 **What it looks like on the moderator-side:**
 ![Example Mod side](static/moderator-side.png)
-# 📝Commands
+# 📝 Commands
 
 | Command              	| Description                                                                      	|
 |----------------------	|----------------------------------------------------------------------------------	|
