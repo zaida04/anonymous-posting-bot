@@ -29,13 +29,21 @@ This repository houses the code for the Fiveable Discord server network's "anony
 
 The bot allows people to **DM** it with the messages they wish to send in. It also allows moderators to set a log channel in their server where they get notifications as to who sends in which messages, with the expectation that they will stay confidential.
 
+# 🎥How do people use this?
+![Example Video](static/example-usage.gif)
+
+**What it looks like on the channel-side:**
+![Example Sent](static/user-side.png)
+
+**What it looks like on the moderator-side:**
+![Example Mod side](static/moderator-side.png)
 # 📝Commands
 
 | Command              	| Description                                                                      	|
 |----------------------	|----------------------------------------------------------------------------------	|
 | `eval`              	| Run some code through your bot                                                   	|
 | `help`              	| Get information on all the commands your bot has.                               	|
-| `anon`              	| Send in an anonymous message to a channel in a guild                            	|
+| `anon`              	| Send in an anonymous message to a channel in a guild (DM ONLY)                   	|
 
 # 🚧 Getting Started
 
@@ -56,7 +64,9 @@ cd anonymous-posting-bot
 npm install  
 npm run build  
 ```
-Be sure to fill in the env variables as seen [here](#env-variables)  
+Be sure to fill in the env variables as seen [here](#env-variables).  
+**Please be sure to fill out a configuration file that abides by [this](https://github.com/zaida04/anonymous-posting-bot/blob/main/src/typings.ts#L1) schema.**  
+Example file [here](https://github.com/zaida04/anonymous-posting-bot/blob/main/config.yml.example)
 
 To start the bot, run this command:
 ```console
