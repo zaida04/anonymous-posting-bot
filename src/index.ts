@@ -3,7 +3,6 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import yaml from 'yaml';
 import { builder, InputError, transformTextToEmbed } from './utils';
-
 import { YAMLConfig } from './typings';
 import * as CONSTANTS from './consts';
 
@@ -11,12 +10,10 @@ const botConfig = {
 	TOKEN: process.env.DISCORD_TOKEN!,
 	GLOBAL_PREFIX: '!'
 };
-
 const context = {
 	currentlyExecutingCommand: new Set<string>(),
 	alreadyAgreed: new Set<string>()
 };
-
 const client = new Client({
 	messageCacheLifetime: 60,
 	messageCacheMaxSize: 1,
@@ -27,7 +24,6 @@ const client = new Client({
 		intents: CONSTANTS.CLIENT_INTENTS
 	}
 });
-
 const preparsedYAML = readFileSync(join(__dirname, '..', 'config.yml'), 'utf8');
 const yamlConfig: YAMLConfig = yaml.parse(preparsedYAML);
 const { promptForChannel, getWebhook, getLogChannel, promptYesOrNo, promptForGuild, exitPrompt } = builder(
