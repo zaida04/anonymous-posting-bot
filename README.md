@@ -56,7 +56,7 @@ Please supply the following ENV variables in a `.env` file in the root of the pr
 | PREFIX               	| Prefix for the bot                                                	|          	|
 
 ### Setup
-You can setup this project manually using the steps below, or using the include docker-compose file by doing `docker compose up -d --build`. There is also an included `heroku.yml` file for deploying to Heroku, which should build with the Dockerfile provided.
+You can setup this project manually using the steps below, or using the included docker-compose file by doing `docker compose up -d --build` or using the published Docker image `docker pull zaid450/anonymous-posting-bot` & `docker run --env-file .env zaid450/anonymous-posting-bot`. There is also an included `heroku.yml` file for deploying to Heroku, which should build with the Dockerfile provided.
 
 ```
 git clone https://github.com/zaida04/anonymous-posting-bot.git   

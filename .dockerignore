@@ -4,3 +4,4 @@ deploy.ps1
 deploy.sh
 docker-compose*.yml
 heroku.yml
+config.yml

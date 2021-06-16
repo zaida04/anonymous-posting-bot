@@ -5,3 +5,5 @@ services:
     image: zaid450/anonymous-posting-bot
     restart: unless-stopped
     env_file: .env
+    volumes: 
+      - ./config.yml:/usr/app/config.yml
