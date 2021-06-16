@@ -47,7 +47,7 @@ The bot allows people to **DM** it with the messages they wish to send in. It al
 
 # 🚧 Getting Started
 
-## ENV variables
+### ENV variables
 Please supply the following ENV variables in a `.env` file in the root of the project.
 
 | Key                  	| Description                                                       	| Optional 	|
@@ -55,7 +55,7 @@ Please supply the following ENV variables in a `.env` file in the root of the pr
 | DISCORD_TOKEN        	| The token belonging to the Discord bot                            	|          	|
 | PREFIX               	| Prefix for the bot                                                	|          	|
 
-## Setup
+### Setup
 You can setup this project manually using the steps below, or using the include docker-compose file by doing `docker compose up -d --build`. There is also an included `heroku.yml` file for deploying to Heroku, which should build with the Dockerfile provided.
 
 ```
