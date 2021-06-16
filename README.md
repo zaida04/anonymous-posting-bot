@@ -65,8 +65,7 @@ npm install
 npm run build  
 ```
 Be sure to fill in the env variables as seen [here](#env-variables).  
-**Please be sure to fill out a configuration file that abides by [this](https://github.com/zaida04/anonymous-posting-bot/blob/main/src/typings.ts#L1) schema.**  
-Example file [here](https://github.com/zaida04/anonymous-posting-bot/blob/main/config.yml.example)
+**Please be sure to fill out a `config.yaml` that abides by [this](https://github.com/zaida04/anonymous-posting-bot/blob/main/src/typings.ts#L1) schema.** Example file [here](https://github.com/zaida04/anonymous-posting-bot/blob/main/config.yml.example)
 
 To start the bot, run this command:
 ```console
