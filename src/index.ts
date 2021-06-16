@@ -1,4 +1,4 @@
-import { Client, Message, MessageEmbed, WebhookClient, Util, Guild } from 'discord.js';
+import { Client, Message, MessageEmbed, WebhookClient, Util, Guild, Constants } from 'discord.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import yaml from 'yaml';
@@ -37,11 +37,11 @@ const { promptForChannel, getWebhook, getLogChannel, promptYesOrNo, promptForGui
 	context
 );
 
-client.on('ready', () => {
+client.on(Constants.Events.CLIENT_READY, () => {
 	console.log(CONSTANTS.CLIENT_LOGGED_IN(client.user!.tag));
 });
 
-client.on('message', async (msg: Message) => {
+client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 	if (msg.channel.type !== 'dm' || msg.author.bot || !msg.content.startsWith(botConfig.GLOBAL_PREFIX))
 		return;
 	const [commandName, ...args] = msg.content.slice(botConfig.GLOBAL_PREFIX.length).trim().split(/ +/);
