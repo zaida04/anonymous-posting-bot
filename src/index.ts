@@ -103,9 +103,13 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 				const conf = yamlConfig.guilds.find((x) => x.id === guild.id);
 
 				const content = Util.escapeMarkdown(args.join(' '));
+				const m = await webhookInstance.send(`**New Anonymous post:** \`${content}\``, {
+					avatarURL: conf!.webhook_icon_url,
+					username: conf!.webhook_name
+				});
 				await logChannel.send(
 					CONSTANTS.NEW_POST_MESSAGE,
-					new MessageEmbed().addFields([
+					new MessageEmbed().setDescription(`[Message](${m.url})`).addFields([
 						{
 							name: 'Author (sensitive info)',
 							value: msg.author,
@@ -118,10 +122,6 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 						}
 					])
 				);
-				await webhookInstance.send(`**New Anonymous post:** \`${content}\``, {
-					avatarURL: conf!.webhook_icon_url,
-					username: conf!.webhook_name
-				});
 				return msg.channel.send(
 					transformTextToEmbed(CONSTANTS.ANON_MESSAGE_SUCCESS, CONSTANTS.SUCCESS_COLOR)
 				);
