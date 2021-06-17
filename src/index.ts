@@ -1,4 +1,4 @@
-import { Client, Message, MessageEmbed, WebhookClient, Util, Guild, Constants } from 'discord.js';
+import { Client, Message, MessageEmbed, WebhookClient, Util, Guild, Constants, Collection } from 'discord.js';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import yaml from 'yaml';
@@ -12,7 +12,8 @@ const botConfig = {
 };
 const context = {
 	currentlyExecutingCommand: new Set<string>(),
-	alreadyAgreed: new Set<string>()
+	alreadyAgreed: new Set<string>(),
+	cachedWebhooks: new Collection<string, WebhookClient>()
 };
 const client = new Client({
 	messageCacheLifetime: 60,
@@ -69,13 +70,15 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 				await msg.channel.send(
 					transformTextToEmbed(CONSTANTS.PROVIDE_CHANNEL, CONSTANTS.PROMPT_COLOR)
 				);
-				const channel_dest = await promptForChannel(msg.channel, msg.author, guild);
-				if (!channel_dest) throw new InputError(CONSTANTS.CHANNEL_NOT_FOUND);
+				const channelDest = await promptForChannel(msg.channel, msg.author, guild);
+				if (!channelDest) throw new InputError(CONSTANTS.CHANNEL_NOT_FOUND);
 
 				// find webhook
-				const webhook = getWebhook(guild.id, channel_dest.id);
+				const webhook = getWebhook(guild.id, channelDest.id);
 				if (!webhook) throw new InputError(CONSTANTS.CHANNEL_ANON_NOT_ENABLED);
-				const webhookInstance = new WebhookClient(webhook.webhook_id, webhook.webhook_token);
+				const webhookInstance =
+					context.cachedWebhooks.get(channelDest.id) ??
+					new WebhookClient(webhook.webhook_id, webhook.webhook_token);
 
 				// agreement
 				if (
