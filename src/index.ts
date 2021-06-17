@@ -109,7 +109,7 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 				});
 				await logChannel.send(
 					CONSTANTS.NEW_POST_MESSAGE,
-					new MessageEmbed().setDescription(`[Message](${m.url})`).addFields([
+					new MessageEmbed().addFields([
 						{
 							name: 'Author (sensitive info)',
 							value: msg.author,
