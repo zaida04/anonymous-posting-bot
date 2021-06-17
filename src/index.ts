@@ -58,6 +58,10 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 						CONSTANTS.ERROR_COLOR
 					)
 				);
+			if (msg.content.length > 1900)
+				return msg.channel.send(
+					'Your message is too long! Please shorten it to under 1900 characters!'
+				);
 			context.currentlyExecutingCommand.add(msg.author.id);
 
 			try {
