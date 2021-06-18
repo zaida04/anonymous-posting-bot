@@ -39,7 +39,7 @@ client.on(Constants.Events.CLIENT_READY, () => {
 	client.user!.setPresence({
 		activity: {
 			type: 'PLAYING',
-			name: `DM me ${botConfig.GLOBAL_PREFIX}anon to send a message!`
+			name: `DM ${botConfig.GLOBAL_PREFIX}anon to start!`
 		},
 		status: 'online'
 	});
