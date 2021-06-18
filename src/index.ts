@@ -36,6 +36,13 @@ const { promptForChannel, getWebhook, getLogChannel, promptYesOrNo, promptForGui
 
 client.on(Constants.Events.CLIENT_READY, () => {
 	console.log(CONSTANTS.CLIENT_LOGGED_IN(client.user!.tag));
+	client.user!.setPresence({
+		activity: {
+			type: "PLAYING",
+			name: `DM me ${botConfig.GLOBAL_PREFIX}anon to send a message!`
+		},
+		status: 'online'
+	});
 });
 
 client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
