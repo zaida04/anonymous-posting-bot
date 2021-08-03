@@ -126,8 +126,6 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 					new MessageEmbed().setDescription(`
 						**Author (sensitive info):** 
 						${msg.author}
-						\n
-						\n
 						\`\`\`${content}\`\`\`
 				`)
 				);
