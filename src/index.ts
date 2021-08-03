@@ -35,7 +35,7 @@ const { promptForChannel, getWebhook, getLogChannel, promptYesOrNo, promptForGui
 );
 
 client.on(Constants.Events.CLIENT_READY, () => {
-	console.log(CONSTANTS.CLIENT_LOGGED_IN(client.user!.tag));
+	log('info', CONSTANTS.CLIENT_LOGGED_IN(client.user!.tag));
 	client.user!.setPresence({
 		activity: {
 			type: 'PLAYING',
@@ -65,10 +65,12 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 						CONSTANTS.ERROR_COLOR
 					)
 				);
-			if (msg.content.length > 1900)
+			if (msg.content.length > 1900) {
+				log('warn', `User ${msg.author.tag} ${msg.author.id} message was over 1900 characters`);
 				return msg.channel.send(
 					'Your message is too long! Please shorten it to under 1900 characters!'
 				);
+			}
 			context.currentlyExecutingCommand.add(msg.author.id);
 
 			try {
@@ -118,36 +120,27 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 					avatarURL: conf!.webhook_icon_url,
 					username: conf!.webhook_name
 				});
+
 				await logChannel.send(
 					CONSTANTS.NEW_POST_MESSAGE,
-					new MessageEmbed().addFields([
-						{
-							name: 'Author (sensitive info)',
-							value: msg.author,
-							inline: true
-						},
-						{
-							name: 'Content',
-							value: `\`\`\`${content}\`\`\``,
-							inline: false
-						}
-					])
+					new MessageEmbed().setDescription(`
+						Author (sensitive info): ${msg.author}
+						\`\`\`${content}\`\`\`
+				`)
 				);
 				return msg.channel.send(
 					transformTextToEmbed(CONSTANTS.ANON_MESSAGE_SUCCESS, CONSTANTS.SUCCESS_COLOR)
 				);
 			} catch (e) {
 				if (e instanceof InputError) {
-					console.log(
-						`[INFO] User ${msg.author.tag} (${msg.author.id}) caused an input error. ${e.message}`
+					log(
+						'warn',
+						`User ${msg.author.tag} (${msg.author.id}) caused an input error. ${e.toString()}`
 					);
 					msg.reply(transformTextToEmbed(e.message, CONSTANTS.ERROR_COLOR));
 				} else {
-					console.log(
-						`[ERR] User ${msg.author.tag} (${
-							msg.author.id
-						}) flow caused an error. ${e.toString()}`
-					);
+					log('err', `User ${msg.author.tag} (${msg.author.id}) flow caused an error. Error below`);
+					console.log(e);
 					msg.reply(transformTextToEmbed(CONSTANTS.ERROR_OCCURED, CONSTANTS.ERROR_COLOR));
 				}
 			} finally {
@@ -156,6 +149,10 @@ client.on(Constants.Events.MESSAGE_CREATE, async (msg: Message) => {
 		}
 	}
 });
+
+function log(type: string, content: string) {
+	return console.log(`[${type.toUpperCase()}][${Date.toString()}] ${content}`);
+}
 
 (() => {
 	for (const prop in botConfig) {
